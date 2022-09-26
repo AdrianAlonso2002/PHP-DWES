@@ -9,7 +9,7 @@ table,tr,td{
 <BODY>
 <?php
 
-#Ej2
+#Ej5
 
 $num="8";
 $res="";
