@@ -18,7 +18,7 @@ $div=$num;
 while ($div > $res) {
 		$res=($div%$base);
 		$div=(int)($div/$base);
-		$bin="$res$bin";
+		$bin="$res$bin"; //Primero ponemos $res, para que se vea al revés.
 }
 
 #Este es el último número que se agrega al binario si es distinto de 0 el último.
