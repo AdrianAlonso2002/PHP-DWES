@@ -24,7 +24,7 @@ $mayor="";
 
 for ($fila = 0; $fila < $arrlength; $fila++) {
   for ($col = 0; $col < $arrlength2; $col++) {
-    echo "(".$matriz[$fila][$col].")= (elemento pos ".$matriz[$fila][$col].") ";
+    echo "(".$matriz[$fila][$col].")= (elemento pos".$matriz[$fila][$col].") ";
 	if ($matriz[$fila][$col] > $mayor) {
 		$mayor= $matriz[$fila][$col]." Fila ".$fila." y columna ".$col;
 	}
