@@ -33,7 +33,7 @@ for ($fila = 0; $fila < $arrlength; $fila++) {
 	$matriz[$fila][$col] = rand(0,10);
     echo "(".$matriz[$fila][$col].")";
 	if ($contc!=3) {
-		echo "- ";
+		echo " - ";
 		$contc++;
 }else {
 	echo "<br>";
@@ -52,7 +52,7 @@ for ($fila = 0; $fila < $arrlength3; $fila++) {
 	$matriz2[$fila][$col] = rand(0,10);
     echo "(".$matriz2[$fila][$col].")";
 	if ($contc!=3) {
-		echo "- ";
+		echo " - ";
 		$contc++;
 }else {
 	echo "<br>";
@@ -80,7 +80,7 @@ for ($fila = 0; $fila < $arrlength; $fila++) {
 			$sumaf[$fila][$col] = $suma;
 			echo "(".$sumaf[$fila][$col].")";
 			if ($contc!=3) {
-				echo "- ";
+				echo " - ";
 				$contc++;
 			}else {
 				echo "<br>";
@@ -94,50 +94,69 @@ for ($fila = 0; $fila < $arrlength; $fila++) {
 
 #Producto de las matrices:
 
-echo "Producto de las matrices: "."<br><br>";
+echo "<br><br>"."Producto de las matrices: "."<br><br>";
 
 $prod=1;
 $prodf = array (array("","",""), array("","",""), array("","",""));
 
-/*for ($fila = 0; $fila < $arrlength; $fila++) {
-	for ($col = 0; $col < $arrlength2; $col++) {
-		for ($fila = 0; $fila < $arrlength3; $fila++) {
-			for ($col = 0; $col < $arrlength4; $col++) {
-			
-			$prod=$matriz[$fila][$col]*$matriz2[$fila][$col];
-			
-			$prodf[$fila][$col] = $prod;
-			echo "(".$prodf[$fila][$col].")";
-			if ($contc!=3) {
-				echo "- ";
-				$contc++;
-			}else {
-				echo "<br>";
-				$contc=1;
-			}
-			$prod=1;
-}
-}
-}
-}*/
+$suma=0;
+$sumaf = array (array("","",""), array("","",""), array("","",""));
 
 for ($fila = 0; $fila < $arrlength; $fila++) {
 	for ($col = 0; $col < $arrlength2; $col++) {
-			for ($col = 0; $col < $arrlength4; $col++) {
+			for ($i = 0; $i < $arrlength4; $i++) {
 			
-			$prod=((($matriz[$fila][$col]*$matriz2[$fila][$col])+($matriz[$fila][$col+1]*$matriz2[$fila+1][$col]))+($matriz[$fila][$col+2]*$matriz2[$fila+1][$col]));
 			
-			$prodf[$fila][$col] = $prod;
-			echo "(".$prodf[$fila][$col].")";
+			$prodf[$fila][$col]=$matriz[$fila][$i]*$matriz2[$i][$col];
+			
+			$prod= $prodf[$fila][$col];
+			
+			$suma= $suma+$matriz[$fila][$i]*$matriz2[$i][$col];
+			
+			$sumaf[$fila][$col]=$suma;
+			
+			echo "(".$prod.")";
 			if ($contc!=3) {
-				echo "- ";
+				echo " - ";
 				$contc++;
 			}else {
+				echo " = ".$suma;
 				echo "<br>";
 				$contc=1;
 			}
 			$prod=1;
+			}
+			$suma=0;
 }
+}
+
+echo "<br><br>"."Resultado del producto de las matrices: "."<br><br>";
+
+$contc2=1;
+
+for ($fila = 0; $fila < $arrlength; $fila++) {
+	for ($col = 0; $col < $arrlength2; $col++) {
+			for ($i = 0; $i < $arrlength4; $i++) {
+			
+			$suma= $suma+$matriz[$fila][$i]*$matriz2[$i][$col];
+			
+			if ($contc!=3) {
+				$contc++;
+			}else
+				if ($contc2!=3) {
+				echo "($suma)";
+				echo " - ";
+				$contc=1;
+				$contc2++;
+				}else {
+				echo "($suma)";
+				echo "<br>";
+				$contc2=1;
+				$contc=1;
+				}
+			
+			}
+			$suma=0;
 }
 }
 
