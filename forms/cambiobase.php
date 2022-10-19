@@ -60,7 +60,7 @@ td {padding: 5px}
 						//limpiamos las variables
 						
 						$dec = test_input($_POST["dec"]);
-						$sel = $_POST["sel"];
+						$sel = test_input($_POST["sel"]);
 						  
 						 //Lamamos a la función indicada.
 						 
