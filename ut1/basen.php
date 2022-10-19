@@ -33,7 +33,7 @@ td {padding: 5px}
 							<input type="text" name="bas" value="" />
 							<span class="error">*</span>
 							<br><br>
-							<button id="env" type="submit">Enviar</button>
+							<button id="env" type="submit">Cambio Base</button>
 							<button id="borr" type="reset">Borrar</button>
 							<br><br>
 						</form>	
