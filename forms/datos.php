@@ -63,7 +63,6 @@ td {padding: 5px}
 						$ap2 = "";
 						$ema = "";
 						$sex = "";
-						$oblig=false;
 
 						//Recojo las variables del formulario
 
