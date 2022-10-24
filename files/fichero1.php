@@ -102,7 +102,7 @@ td {padding: 5px}
 							fwrite($myfile, $txt);
 							$txt = str_pad($n3,41," ",STR_PAD_RIGHT);
 							fwrite($myfile, $txt);
-							$txt = str_pad($n4,9," ",STR_PAD_RIGHT);
+							$txt = str_pad($n4,11," ",STR_PAD_RIGHT);
 							fwrite($myfile, $txt);
 							$txt = str_pad($n5,26," ",STR_PAD_RIGHT);
 							fwrite($myfile, $txt);
