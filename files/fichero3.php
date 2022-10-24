@@ -27,11 +27,7 @@ td {padding: 5px}
 						
 						
 						<?php 
-
-						//Siempre hay que poner este if para que el php entienda de donde vienen las variables
-
-						
-							 
+	 
 						 // defino variables
 						
 						$nom = "";
