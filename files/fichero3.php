@@ -52,7 +52,7 @@ td {padding: 5px}
 							echo "<td><b>Localidad</b></td>";
 							echo "</tr>";
 							
-							$myfile=fopen("alumnos1.txt","r") or die("No se puede crear");
+							$myfile=fopen("alumnos1.txt","r") or die("No se puede mostrar");
 							while(!feof($myfile)){
 							
 							$data = fgets($myfile); 
