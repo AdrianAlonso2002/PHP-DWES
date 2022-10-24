@@ -56,7 +56,7 @@ td {padding: 5px}
 							
 							//Abrimos el fichero correspondiente.
 							
-							$myfile=fopen("alumnos2.txt","r") or die("No se puede crear");
+							$myfile=fopen("alumnos2.txt","r") or die("No se puede mostrar");
 							
 							while(!feof($myfile)){
 							
