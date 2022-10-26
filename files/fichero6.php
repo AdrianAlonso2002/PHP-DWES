@@ -50,10 +50,10 @@ td {padding: 5px}
 						 //Lamamos a la función indicada.
 						 
 						if(file_exists($fic)){
-							echo"El directorio ".$fic." existe<br>";
+							echo "El directorio ".$fic." existe<br>";
 							files1($fic);
 							}else{
-							echo"El directorio ".$fic."  no existe<br>";
+							echo "El directorio ".$fic."  no existe<br>";
 						} 
 
 						}
