@@ -1,4 +1,3 @@
-<HTML>
 <HEAD>
 <TITLE> UT3: Fichero6 </TITLE>
 <meta charset="utf-8" />
@@ -48,12 +47,15 @@ td {padding: 5px}
 
 						$fic = $_POST["fic"];
 						
-						
-						  
 						 //Lamamos a la función indicada.
 						 
-						files1($fic);
-						
+						if(file_exists($fic)){
+							echo"El directorio ".$fic." existe<br>";
+							files1($fic);
+							}else{
+							echo"El directorio ".$fic."  no existe<br>";
+						} 
+
 						}
 						//BIEN
 						//Funciones
@@ -64,7 +66,7 @@ td {padding: 5px}
 						function files1($n1) {
 							
 							echo "<h1>Operaciones Ficheros</h1>"."<br>";
-							
+								
 							$myfile = fopen("$n1", "r") or die("No se puede crear");
 
 							$nom=basename($n1);
