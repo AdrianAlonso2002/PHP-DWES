@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<title>Listado empleados</title>
+<link rel="stylesheet" href="bootstrap.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="author" content="Adrian" />
+</HEAD>
+<style>
+li {
+  padding: 0.2em;
+  text-decoration: underline;
+}
+</style>
+<BODY>
+		<header>
+		</header>
+		<nav>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<h1>LISTADO EMPLEADOS</h1>
+					<div>
+						<form name="formu" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+							<label for="dep">DEP: </label>
+							<select name="dep">
+							<?php
+								dep();
+							?>
+							</select><br>
+							<button id="env" type="submit">Enviar</button>
+							<button id="borr" type="reset">Borrar</button>
+							<br><br>
+						</form>	
+						
+						<?php 
+
+						//Siempre hay que poner este if para que el php entienda de donde vienen las variables
+
+						 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+							 
+						// defino variables
+
+						$dep = "";
+
+						//Recojo las variables del formulario
+
+						$dep = $_POST["dep"];
+						
+						//limpiamos las variables
+						
+						$dep = test_input($_POST["dep"]);
+						  
+						//Lamamos a la función indicada.
+						 
+						listado($dep);
+						
+						}
+		
+						//Funciones
+	
+						function test_input($data) {
+						  $data = trim($data);
+						  $data = stripslashes($data);
+						  $data = htmlspecialchars($data);
+						  return $data;
+						}
+						
+						function dep(){
+							/*SELECTs - mysql PDO*/
+
+							$servername = "localhost";
+							$username = "root";
+							$password = "rootroot";
+							$dbname = "empleadosnn";
+
+							try {
+								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+								$stmt = $conn->prepare("SELECT cod_dep FROM dep");
+								$stmt->execute();
+
+								// set the resulting array to associative
+								$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+								foreach($stmt->fetchAll() as $row) {
+									echo "<option>".$row["cod_dep"]."</option>"."<br>";
+								}
+								}
+							catch(PDOException $e) {
+								echo "Error: " . $e->getMessage();
+							}
+							$conn = null;
+						}
+						
+						function listado($d){
+							/*SELECTs - mysql PDO*/
+
+							$servername = "localhost";
+							$username = "root";
+							$password = "rootroot";
+							$dbname = "empleadosnn";
+
+							try {
+								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+								$stmt = $conn->prepare("SELECT nombre FROM emple WHERE cod_dep = '$d'");
+								$stmt->execute();
+
+								// set the resulting array to associative
+								$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+								echo "<h2>Listado</h2>"."<br>";
+								echo "<ul>";
+								foreach($stmt->fetchAll() as $row) {
+									echo "<li>".$row["nombre"]."</li><br>";
+								}
+								echo "</ul>";
+								}
+							catch(PDOException $e) {
+								echo "Error: " . $e->getMessage();
+							}
+							$conn = null;
+						}
+						
+						?>
+						
+					</div>
+				</article>
+			</section>
+		</main>
+		<footer>
+		</footer>
+		<aside>
+		</aside>
+</BODY>
+</HTML>
