@@ -23,7 +23,8 @@
 							<label for="dni">DNI: </label>
 							<select name="dni">
 							<?php
-								dni();
+								require "empleadosnn_fun.php";
+								mostrardnims();
 							?>
 							</select><br>
 							<label for="sa">SAL_ACTUAL: </label>
@@ -58,73 +59,17 @@
 						$dni = test_input($_POST["dni"]);
 						$sa = test_input($_POST["sa"]);
 						$sn = test_input($_POST["sn"]);
+						
+						$error = errorms($dni,$sa,$sn);
+							 
+						if ($error == true) {
+							echo "Corrige los errores.";
+						}else
 						  
 						//Lamamos a la función indicada.
 						 
-						mysql($dni,$sa,$sn);
+						mysqlms($dni,$sa,$sn);
 						
-						}
-		
-						//Funciones
-	
-						function test_input($data) {
-						  $data = trim($data);
-						  $data = stripslashes($data);
-						  $data = htmlspecialchars($data);
-						  return $data;
-						}
-						
-						function dni(){
-							/*SELECTs - mysql PDO*/
-
-							$servername = "localhost";
-							$username = "root";
-							$password = "rootroot";
-							$dbname = "empleadosnn";
-
-							try {
-								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-								$stmt = $conn->prepare("SELECT dni FROM emple");
-								$stmt->execute();
-
-								// set the resulting array to associative
-								$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-								foreach($stmt->fetchAll() as $row) {
-									echo "<option>".$row["dni"]."</option>"."<br>";
-								}
-								}
-							catch(PDOException $e) {
-								echo "Error: " . $e->getMessage();
-							}
-							$conn = null;
-						}
-						
-						
-						function mysql($d,$sa,$sn) {
-
-							$servername = "localhost";
-							$username = "root";
-							$password = "rootroot";
-							$dbname = "empleadosnn";
-
-							try {
-								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-								$stmt = $conn->prepare("UPDATE emple SET salario = '$sn' WHERE dni = '$d'and salario = '$sa';");
-								$stmt->execute();
-
-								// set the resulting array to associative
-								$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-								
-								
-								echo "Actualizado $d, su salrio de $sa a $sn";
-
-							}
-							catch(PDOException $e) {
-								echo "Error: " . $e->getMessage();
-							}
-							$conn = null;	
 						}
 						
 						?>
