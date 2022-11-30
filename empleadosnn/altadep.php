@@ -52,7 +52,7 @@
 						$cod = $_POST["cod"];
 						$nomb = test_input($_POST["nomb"]);
 						
-						$error = errores($cod,$nomb);
+						$error = errorad($cod,$nomb);
 							 
 						if ($error == true) {
 							echo "Corrige los errores.";
@@ -76,3 +76,4 @@
 		</aside>
 </BODY>
 </HTML>
+
