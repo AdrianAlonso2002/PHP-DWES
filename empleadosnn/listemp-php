@@ -27,7 +27,8 @@ li {
 							<label for="dep">DEP: </label>
 							<select name="dep">
 							<?php
-								dep();
+								require "empleadosnn_fun.php";
+								mostrardeple();
 							?>
 							</select><br>
 							<button id="env" type="submit">Enviar</button>
@@ -52,75 +53,17 @@ li {
 						//limpiamos las variables
 						
 						$dep = test_input($_POST["dep"]);
+						
+						$error = errorle($dep);
+							 
+						if ($error == true) {
+							echo "Corrige los errores.";
+						}else
 						  
 						//Lamamos a la función indicada.
 						 
 						listado($dep);
 						
-						}
-		
-						//Funciones
-	
-						function test_input($data) {
-						  $data = trim($data);
-						  $data = stripslashes($data);
-						  $data = htmlspecialchars($data);
-						  return $data;
-						}
-						
-						function dep(){
-							/*SELECTs - mysql PDO*/
-
-							$servername = "localhost";
-							$username = "root";
-							$password = "rootroot";
-							$dbname = "empleadosnn";
-
-							try {
-								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-								$stmt = $conn->prepare("SELECT cod_dep FROM dep");
-								$stmt->execute();
-
-								// set the resulting array to associative
-								$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-								foreach($stmt->fetchAll() as $row) {
-									echo "<option>".$row["cod_dep"]."</option>"."<br>";
-								}
-								}
-							catch(PDOException $e) {
-								echo "Error: " . $e->getMessage();
-							}
-							$conn = null;
-						}
-						
-						function listado($d){
-							/*SELECTs - mysql PDO*/
-
-							$servername = "localhost";
-							$username = "root";
-							$password = "rootroot";
-							$dbname = "empleadosnn";
-
-							try {
-								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-								$stmt = $conn->prepare("SELECT nombre FROM emple WHERE cod_dep = '$d'");
-								$stmt->execute();
-
-								// set the resulting array to associative
-								$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-								echo "<h2>Listado</h2>"."<br>";
-								echo "<ul>";
-								foreach($stmt->fetchAll() as $row) {
-									echo "<li>".$row["nombre"]."</li><br>";
-								}
-								echo "</ul>";
-								}
-							catch(PDOException $e) {
-								echo "Error: " . $e->getMessage();
-							}
-							$conn = null;
 						}
 						
 						?>
