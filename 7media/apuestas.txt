@@ -1,0 +1,16 @@
+Jugador1***8.5***100
+Jugador2***9.5***100
+Lobo***16***100
+Jugador4***19***100
+Jugador1***8***100
+Jugador2***11.5***100
+Lobo***13.5***100
+Jugador4***16***100
+Jugador1***12***54
+Jugador2***17.5***54
+Jugador3***20***54
+Jugador4***16***54
+Jugador1***16***999
+Jugador2***12.5***999
+Jugador3***10.5***999
+Jugador4***6.5***999
